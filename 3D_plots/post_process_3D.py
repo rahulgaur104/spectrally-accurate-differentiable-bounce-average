@@ -18,11 +18,11 @@ from desc.plotting import *
 
 fname_path0 = (
     os.path.dirname(os.getcwd())
-    + "/eq_final_OH.h5"
+    + "/eq_initial.h5"
 )
 fname_path1 = (
     os.path.dirname(os.getcwd())
-    + "/opt_step_11.h5"
+    + "/eq_optimized_final2.h5"
 )
 
 eq0 = Equilibrium.load(f"{fname_path0}")
@@ -63,7 +63,7 @@ for eq, legend, scale in zip(eq_list, legend_list, scale_list):
     fig.write_html(
         save_path_html, config=config, include_plotlyjs=True, full_html=True
     )
-
+    
     # save_path_png = os.getcwd() + f"/3D_modB/modB_3d_{keyword}_{legend}.png"
     # fig.write_image(save_path_png, scale=scale)
     plt.close()

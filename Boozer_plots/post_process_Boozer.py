@@ -14,18 +14,20 @@ from desc.grid import LinearGrid
 from scipy.interpolate import griddata
 
 from desc.plotting import *
+from desc.compat import flip_theta
 
 
 fname_path0 = (
     os.path.dirname(os.getcwd())
-    + "/eq_final_OH.h5"
+    + "/eq_initial.h5"
 )
 fname_path1 = (
     os.path.dirname(os.getcwd())
-    + "/opt_step_11.h5"
+    + "/eq_optimized_final2.h5"
 )
 eq0 = Equilibrium.load(f"{fname_path0}")
 eq1 = Equilibrium.load(f"{fname_path1}")
+eq1 = flip_theta(eq1)
 
 N = int(200)
 grid = LinearGrid(L=N)
@@ -90,8 +92,8 @@ plt.tight_layout()
 #    dpi=300,
 #)
 plt.savefig(
-    #f"Boozer_contour_plot__rho{rho0}_initial.pdf",
-    f"Boozer_contour_plot__rho{rho0}_optimized.pdf",
+    #f"Boozer_contour_plot_rho{rho0}_initial.pdf",
+    f"Boozer_contour_plot_rho{rho0}_optimized.pdf",
     dpi=400,
 )
 # plt.show()
